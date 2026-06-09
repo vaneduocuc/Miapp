@@ -1,20 +1,55 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title class="titulo-animado">Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <!-- Usuario recibido -->
+  <h2>Bienvenido {{usuario?.usuario}}</h2>
+
+  <!-- FORMULARIO -->
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input 
+      [(ngModel)]="nombre" 
+      [class.animar]="animarInputs">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Apellido</ion-label>
+    <ion-input 
+      [(ngModel)]="apellido" 
+      [class.animar]="animarInputs">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Nivel Educación</ion-label>
+    <ion-input [(ngModel)]="nivel"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Fecha Nacimiento</ion-label>
+    <ion-item>
+  <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>Fecha Nacimiento</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="fecha">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</ion-item>
+  </ion-item>
+
+  <!-- BOTONES -->
+  <ion-button expand="full" color="medium" (click)="limpiar()">
+    Limpiar
+  </ion-button>
+
+  <ion-button expand="full" color="primary" (click)="mostrar()">
+    Mostrar
+  </ion-button>
+
 </ion-content>
