@@ -1,11 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  standalone: false
+  standalone: true, // ✅ Activamos Standalone
+  imports: [
+    CommonModule,
+    FormsModule,  // 🔥 Fundamental para el [(ngModel)] de tu formulario de login
+    IonicModule   // 🔥 Fundamental para los componentes <ion-input>, <ion-button>, etc.
+  ]
 })
 export class LoginPage implements OnInit {
 
@@ -19,7 +27,6 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
 
   ingresar() {
-
     // Validación usuario
     if (this.user.usuario.length < 3 || this.user.usuario.length > 8) {
       alert("El usuario debe tener entre 3 y 8 caracteres");
@@ -36,7 +43,6 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/home'], {
       state: { data: this.user }
     });
-
   }
 
 }

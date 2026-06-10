@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
 
 import { HomePageRoutingModule } from './home-routing.module';
@@ -24,8 +23,12 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatFormFieldModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    
+    // ✅ PASO 1: Agregamos el componente aquí porque ahora es Standalone
+    HomePage 
   ],
-  declarations: [HomePage]
+  // ❌ PASO 2: Quitamos a HomePage de las declaraciones
+  declarations: [] 
 })
 export class HomePageModule {}

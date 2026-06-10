@@ -3,20 +3,20 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
-import { LoginPage } from './login.page';
+import { ListaPageRoutingModule } from './lista-routing.module';
+import { ListaPage } from './lista.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule,
+    ListaPageRoutingModule,
     
     // ✅ PASO 1: Movemos el componente aquí porque ahora es Standalone
-    LoginPage 
+    ListaPage 
   ],
-  // ❌ PASO 2: Quitamos a LoginPage de las declaraciones
+  // ❌ PASO 2: Quitamos a ListaPage de las declaraciones
   declarations: [] 
 })
-export class LoginPageModule {}
+export class ListaPageModule {}

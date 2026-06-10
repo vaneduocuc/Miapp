@@ -16,7 +16,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  // ❌ PASO 1: Quitamos a AppComponent de las declaraciones
+  declarations: [], 
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -28,7 +29,10 @@ import { AppRoutingModule } from './app-routing.module';
     MatFormFieldModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+
+    // ✅ PASO 2: Movemos el AppComponent aquí porque es Standalone
+    AppComponent 
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

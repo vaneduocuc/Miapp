@@ -1,13 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="titulo-animado">Home</ion-title>
+    <ion-title class="titulo-animado">SkeletonApp</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-  <!-- Usuario recibido -->
-  <h2>Bienvenido {{usuario?.usuario}}</h2>
+  <!-- MENSAJE DE BIENVENIDA -->
+  <h2>Bienvenido/a {{usuario?.usuario}}</h2>
+  <p>Ingresa datos para crear un nuevo usuario administrador:</p>
 
   <!-- FORMULARIO -->
   <ion-item>
@@ -31,16 +32,14 @@
     <ion-input [(ngModel)]="nivel"></ion-input>
   </ion-item>
 
+  <!-- DATEPICKER MATERIAL -->
   <ion-item>
-    <ion-label position="floating">Fecha Nacimiento</ion-label>
-    <ion-item>
-  <mat-form-field appearance="fill" style="width: 100%;">
-    <mat-label>Fecha Nacimiento</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="fecha">
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-</ion-item>
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Fecha Nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="fecha">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
   </ion-item>
 
   <!-- BOTONES -->
@@ -51,5 +50,9 @@
   <ion-button expand="full" color="primary" (click)="mostrar()">
     Mostrar
   </ion-button>
+
+  <ion-button expand="full" routerLink="/registro">Registrar</ion-button>
+  <ion-button expand="full" routerLink="/lista">Ver Lista</ion-button>
+  <ion-button expand="full" routerLink="/info">Acerca de</ion-button>
 
 </ion-content>
