@@ -1,0 +1,48 @@
+<div class="ion-padding">
+
+  <h2>Bienvenido/a {{usuario?.usuario}}</h2>
+  <p>Ingresa datos para crear un nuevo usuario administrador:</p>
+
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input 
+      [(ngModel)]="nombre" 
+      [class.animar]="animarInputs">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Apellido</ion-label>
+    <ion-input 
+      [(ngModel)]="apellido" 
+      [class.animar]="animarInputs">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Nivel Educación</ion-label>
+    <ion-input [(ngModel)]="nivel"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Fecha Nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="fecha">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </ion-item>
+
+  <ion-button expand="full" color="medium" (click)="limpiar()">
+    Limpiar
+  </ion-button>
+
+  <ion-button expand="full" color="primary" (click)="mostrar()">
+    Mostrar
+  </ion-button>
+
+  <ion-button expand="full" routerLink="/registro">Registrar</ion-button>
+  <ion-button expand="full" routerLink="/lista">Ver Lista</ion-button>
+  <ion-button expand="full" routerLink="/info">Acerca de</ion-button>
+
+</div>

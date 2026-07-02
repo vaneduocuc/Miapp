@@ -1,58 +1,73 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header [translucent]="false">
+  <ion-toolbar color="primary">
     <ion-title class="titulo-animado">SkeletonApp</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="logout()" color="danger" fill="outline">
+        Salir
+        <ion-icon slot="end" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-segment value="perfil" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="perfil">
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="experiencias">
+        <ion-icon name="briefcase-outline"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="certificaciones">
+        <ion-icon name="school-outline"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
 
-  <!-- MENSAJE DE BIENVENIDA -->
-  <h2>Bienvenido/a {{usuario?.usuario}}</h2>
-  <p>Ingresa datos para crear un nuevo usuario administrador:</p>
+  <div class="ion-padding-horizontal ion-padding-top">
+    <ion-button expand="block" color="secondary" (click)="tomarFotografia()">
+      <ion-icon name="camera-outline" slot="start"></ion-icon>
+      Capturar Foto de Perfil
+    </ion-button>
+  </div>
 
-  <!-- FORMULARIO -->
-  <ion-item>
-    <ion-label position="floating">Nombre</ion-label>
-    <ion-input 
-      [(ngModel)]="nombre" 
-      [class.animar]="animarInputs">
-    </ion-input>
-  </ion-item>
+  <ion-card *ngIf="imagenCapturada" class="ion-margin">
+    <ion-card-header>
+      <ion-card-title style="font-size: 1rem;">Foto Capturada</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="ion-text-center">
+      <img [src]="imagenCapturada" alt="Foto de perfil" style="border-radius: 12px; max-height: 200px; object-fit: cover;" />
+    </ion-card-content>
+  </ion-card>
 
-  <ion-item>
-    <ion-label position="floating">Apellido</ion-label>
-    <ion-input 
-      [(ngModel)]="apellido" 
-      [class.animar]="animarInputs">
-    </ion-input>
-  </ion-item>
+  <hr class="ion-margin-horizontal" style="opacity: 0.2;" />
 
-  <ion-item>
-    <ion-label position="floating">Nivel Educación</ion-label>
-    <ion-input [(ngModel)]="nivel"></ion-input>
-  </ion-item>
-
-  <!-- DATEPICKER MATERIAL -->
-  <ion-item>
-    <mat-form-field appearance="fill" style="width: 100%;">
-      <mat-label>Fecha Nacimiento</mat-label>
-      <input matInput [matDatepicker]="picker" [(ngModel)]="fecha">
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  </ion-item>
-
-  <!-- BOTONES -->
-  <ion-button expand="full" color="medium" (click)="limpiar()">
-    Limpiar
-  </ion-button>
-
-  <ion-button expand="full" color="primary" (click)="mostrar()">
-    Mostrar
-  </ion-button>
-
-  <ion-button expand="full" routerLink="/registro">Registrar</ion-button>
-  <ion-button expand="full" routerLink="/lista">Ver Lista</ion-button>
-  <ion-button expand="full" routerLink="/info">Acerca de</ion-button>
-
+  <ion-router-outlet></ion-router-outlet>
 </ion-content>
+
+<ion-card class="ion-margin" color="light">
+    <ion-card-header>
+      <ion-card-title style="font-size: 1rem;">
+        <ion-icon name="location-outline" color="primary" slot="start"></ion-icon>
+        Coordenadas GPS (Rúbrica Sem. 5)
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngIf="latitud && longitud; else cargandoGps">
+        <p><strong>Latitud actual:</strong> {{ latitud }}</p>
+        <p><strong>Longitud actual:</strong> {{ longitud }}</p>
+        <p style="font-size: 0.8rem; color: green; margin-top: 5px;">
+          🟢 Transmitiendo coordenadas síncronas/asíncronas en vivo.
+        </p>
+      </div>
+      
+      <ng-template #cargandoGps>
+        <div class="ion-text-center ion-padding">
+          <ion-spinner name="crescent" color="primary"></ion-spinner>
+          <p style="font-size: 0.9rem; margin-top: 5px;">Buscando señal de satélite GPS...</p>
+        </div>
+      </ng-template>
+    </ion-card-content>
+  </ion-card>

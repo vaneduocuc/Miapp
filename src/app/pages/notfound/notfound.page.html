@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-title>Página No Encontrada</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+  <div style="margin-top: 20%;">
+    <ion-icon name="alert-circle-outline" style="font-size: 80px; color: var(--ion-color-warning);"></ion-icon>
+    <h1>Error 404</h1>
+    <p>La ruta a la que estás intentando acceder no existe o no se encuentra disponible.</p>
+    
+    <ion-button expand="block" color="primary" routerLink="/home" style="margin-top: 30px;">
+      <ion-icon slot="start" name="home-outline"></ion-icon>
+      Volver al Inicio
+    </ion-button>
+  </div>
+</ion-content>

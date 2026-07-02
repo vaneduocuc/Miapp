@@ -1,0 +1,34 @@
+<div class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Certificaciones</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nombre del Certificado</ion-label>
+        <ion-input type="text" [(ngModel)]="nombreCertificado"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha de Obtención</ion-label>
+        <ion-input type="date" [(ngModel)]="fechaObtencion"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" style="margin-top: 10px;">
+        <ion-label>¿El certificado tiene vencimiento?</ion-label>
+        <ion-toggle [(ngModel)]="tieneVencimiento" color="warning"></ion-toggle>
+      </ion-item>
+
+      <ion-item *ngIf="tieneVencimiento">
+        <ion-label position="stacked">Fecha de Vencimiento</ion-label>
+        <ion-input type="date" [(ngModel)]="fechaVencimiento"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" color="primary" style="margin-top: 20px;" (click)="guardarCertificado()">
+        <ion-icon slot="start" name="ribbon-outline"></ion-icon>
+        Guardar Certificado
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</div>

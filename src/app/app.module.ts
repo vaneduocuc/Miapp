@@ -4,6 +4,8 @@ import { RouteReuseStrategy } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { HttpClientModule } from '@angular/common/http';
+
 // Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -15,26 +17,30 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
+import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
+
 @NgModule({
-  // ❌ PASO 1: Quitamos a AppComponent de las declaraciones
-  declarations: [], 
+  declarations: [
+    AppComponent // 👈 Ponlo aquí obligatoriamente
+  ], 
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule, // 🔥 NECESARIO PARA MATERIAL
-
-    // 🔥 MATERIAL COMPLETO
+    BrowserAnimationsModule,
+    HttpClientModule, 
+    
     MatFormFieldModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule,
-
-    // ✅ PASO 2: Movemos el AppComponent aquí porque es Standalone
-    AppComponent 
+    MatNativeDateModule
+    // ❌ Asegúrate de que NO esté AppComponent en esta lista de imports
   ],
   providers: [
+    SQLite,
+    NativeStorage,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],
