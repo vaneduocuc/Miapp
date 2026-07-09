@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
-    canActivate: [AuthGuard] // 👈 2. Activamos la restricción de acceso aquí 🔒
+     //canActivate: [AuthGuard] // 👈 2. Activamos la restricción de acceso aquí 🔒
   },
 
   // REGISTRO

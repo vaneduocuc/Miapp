@@ -2,21 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-
 import { LoginPageRoutingModule } from './login-routing.module';
-import { LoginPage } from './login.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule,
-    
-    // ✅ PASO 1: Movemos el componente aquí porque ahora es Standalone
-    LoginPage 
+    LoginPageRoutingModule
+    // 💡 Quitamos a LoginPage de aquí para romper el conflicto circular
   ],
-  // ❌ PASO 2: Quitamos a LoginPage de las declaraciones
-  declarations: [] 
+  declarations: [] // Se mantiene totalmente vacío
 })
 export class LoginPageModule {}
+

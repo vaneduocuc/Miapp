@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { DbtaskService } from '../services/dbtask'; // 👈 Importamos tu servicio de persistencia
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,9 @@ import { DbtaskService } from '../services/dbtask'; // 👈 Importamos tu servic
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule
+    IonicModule,
+    MatFormFieldModule,    // Permite componentes <mat-form-field>
+    MatInputModule
   ]
 })
 export class LoginPage implements OnInit {
